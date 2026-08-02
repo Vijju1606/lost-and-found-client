@@ -17,6 +17,7 @@ import ReportFoundItem from "../pages/ReportFoundItem";
 import MyLostItems from "../pages/MyLostItems";
 import MyFoundItems from "../pages/MyFoundItems";
 import EditLostItem from "../pages/EditLostItem";
+import EditFoundItem from "../pages/EditFoundItem";
 import FoundMatches from "../pages/FoundMatches";
 import PendingRequests from "../pages/Pendingrequests";
 import SentRequests from "../pages/SentRequests";
@@ -47,6 +48,7 @@ function AppRoutes(){
                 <Route path="/my-lost-items" element ={<ProtectedRoute> <MyLostItems/>    </ProtectedRoute>}/>
                 <Route path="/my-found-items" element={<ProtectedRoute><MyFoundItems /></ProtectedRoute>} />
                 <Route path ="/edit-lost-item/:id" element={<ProtectedRoute><EditLostItem/></ProtectedRoute>}/>
+                <Route path="/edit-found-item/:id" element={<ProtectedRoute><EditFoundItem /></ProtectedRoute>} />
                 <Route path ="/matches/:lostItemId" element ={ <ProtectedRoute>  <FoundMatches/></ProtectedRoute>}/>
 
               

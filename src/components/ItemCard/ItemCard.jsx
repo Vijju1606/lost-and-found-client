@@ -1,8 +1,7 @@
- import FoundItemDetails from "../../pages/FoundItemDetails";
 import "./ItemCard.css";
  import { Link } from "react-router-dom";
  import { useAuth } from "../../context/AuthContext";
- import { getAssetUrl, useImageFallback } from "../../services/api";
+ import { getItemImageUrl, useImageFallback } from "../../services/api";
  
 
  function ItemCard({item}){
@@ -13,7 +12,7 @@ import "./ItemCard.css";
 
                         <div className="item-image">
                            <img
-  src={getAssetUrl(item.imageUrl)}
+  src={getItemImageUrl(item)}
   alt={item.itemName}
   onError={useImageFallback}
 />
@@ -31,6 +30,11 @@ import "./ItemCard.css";
                             <Link to= {`/found-items/${item.id}`}>
                             View Details</Link>
                         </button>
+                        {isOwnItem && (
+                          <Link className="btn btn-secondary" to={`/edit-found-item/${item.id}`}>
+                            Replace Image
+                          </Link>
+                        )}
 
                     </div>
  )

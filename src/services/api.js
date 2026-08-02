@@ -2,9 +2,8 @@ import axios from "axios";
 
 const productionApiUrl = "https://lostandfoundapi-production.up.railway.app/api";
 
-// During local development, Vite forwards /api to the deployed API. This keeps
-// requests same-origin in the browser and avoids the API's localhost CORS block.
-export const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "/api" : productionApiUrl);
+// Vercel builds use this Railway API unless VITE_API_URL is explicitly set.
+export const API_BASE_URL = import.meta.env.VITE_API_URL || productionApiUrl;
 
 export const getAssetUrl = (path) => {
   if (!path) return "";
@@ -12,6 +11,18 @@ export const getAssetUrl = (path) => {
 
   const serverOrigin = new URL(API_BASE_URL, window.location.origin).origin;
   return new URL(path, serverOrigin).toString();
+};
+
+// Keep the image source tied to the file returned for an item.  Different
+// found-item endpoints have used slightly different property names, and an
+// absent `imageUrl` previously caused the UI to replace the uploaded image
+// with the fallback icon.
+export const getItemImageUrl = (item) => {
+  if (!item) return "";
+
+  return getAssetUrl(
+    item.imageUrl ?? item.imageURL ?? item.imagePath ?? item.image ?? item.photoUrl ?? item.photoURL
+  );
 };
 
 export const useImageFallback = (event) => {

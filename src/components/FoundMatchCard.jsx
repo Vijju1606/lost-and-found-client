@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { getAssetUrl, useImageFallback } from "../services/api";
+import { getItemImageUrl, useImageFallback } from "../services/api";
 
 function FoundMatchCard({ match ,onContact}) {
   return (
     <div className="my-lost-card">
 
       <img
-        src={getAssetUrl(match.imageUrl)}
+        src={getItemImageUrl(match)}
         alt={match.itemName}
         className="my-lost-image"
         onError={useImageFallback}
