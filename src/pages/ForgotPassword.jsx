@@ -16,11 +16,17 @@ function ForgotPassword() {
         }
         try{
             setLoading(true);
-            const result = await forgotPassword(email);
+            const normalizedEmail = email.trim().toLowerCase();
+            await forgotPassword(normalizedEmail);
+
+            // Route state is lost on refresh. Keep only the in-progress email for
+            // this browser session so the OTP and reset pages can finish the flow.
+            sessionStorage.setItem("passwordResetEmail", normalizedEmail);
+            sessionStorage.removeItem("passwordResetVerified");
             
             navigate("/verify-otp",{
                 state:{
-                    email:email
+                    email: normalizedEmail
                 }
             });
             
@@ -49,6 +55,8 @@ function ForgotPassword() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+                autoComplete="email"
             />
             </div>
 

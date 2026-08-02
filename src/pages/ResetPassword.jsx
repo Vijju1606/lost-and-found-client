@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate,useLocation } from "react-router-dom";
 import { resetPassword } from "../services/authService";
 import "./ResetPassword.css";
 import {FaEye,FaEyeSlash} from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 function ResetPassword(){
     const location = useLocation();
     const navigate = useNavigate();
-    const email = location.state?.email;
+    const email = location.state?.email || sessionStorage.getItem("passwordResetEmail");
 
     const[newPassword,setNewPassword]=useState("");
     const[confirmPassword,setConfirmPassword]=useState("");
     const[showPassword,setShowPassword]=useState(false);
     const[showConfirmPassword,setShowConfirmPassword]=useState(false);
     const[loading,setLoading]=useState(false);
+
+    useEffect(() => {
+        if (!email || sessionStorage.getItem("passwordResetVerified") !== "true") {
+            navigate("/forgot-password", { replace: true });
+        }
+    }, [email, navigate]);
     
 
     const handleResetPassword = async(e)=>{
@@ -26,21 +31,27 @@ function ResetPassword(){
             return;
         }
         if(newPassword !== confirmPassword){
-            alert("Password do not match.");
+            alert("Passwords do not match.");
+            return;
+        }
+        if (newPassword.length < 8) {
+            alert("Password must be at least 8 characters long.");
             return;
         }
         try{
             setLoading(true);
-            const result=await resetPassword(
+            const result = await resetPassword(
                 email,
                 newPassword,
                 confirmPassword
             );
-            alert(result.message)
+            sessionStorage.removeItem("passwordResetEmail");
+            sessionStorage.removeItem("passwordResetVerified");
+            alert(result.message || "Password changed successfully.");
             navigate("/login");
         }
         catch(error){
-            alert(error.response?.data?.message);
+            alert(error.response?.data?.message || "Unable to reset your password. Please request a new OTP and try again.");
         }
         finally{
             setLoading(false);
@@ -70,6 +81,9 @@ function ResetPassword(){
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
         placeholder="Enter your password"
+        minLength="8"
+        required
+        autoComplete="new-password"
     />
 
     <span
@@ -89,6 +103,9 @@ function ResetPassword(){
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         placeholder="Enter your password"
+        minLength="8"
+        required
+        autoComplete="new-password"
     />
 
     <span

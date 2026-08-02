@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || "https://lostandfoundapi-production.up.railway.app/api";
+const productionApiUrl = "https://lostandfoundapi-production.up.railway.app/api";
+
+// During local development, Vite forwards /api to the deployed API. This keeps
+// requests same-origin in the browser and avoids the API's localhost CORS block.
+export const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "/api" : productionApiUrl);
 
 export const getAssetUrl = (path) => {
   if (!path) return "";
