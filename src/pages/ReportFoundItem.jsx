@@ -26,10 +26,15 @@ function ReportFoundItem() {
       formData.append("ItemName", itemName);
       formData.append("Description", description);
       formData.append("Location", location);
-      formData.append("DateFound", dateFound);
+      // The API binds this field as a DateTime; a date-only input causes a
+      // server-side save failure.
+      formData.append("DateFound", `${dateFound}T00:00:00.000Z`);
       formData.append("Image", image);
 
       const result = await reportFoundItem(formData);
+      if (result.success === false) {
+        throw new Error(result.message || "Unable to report found item.");
+      }
       alert(result.message || "Found item reported successfully.");
 
       setItemName("");
@@ -40,7 +45,7 @@ function ReportFoundItem() {
       event.target.reset();
       navigate("/");
     } catch (error) {
-      alert(error.response?.data?.message || "Unable to report found item.");
+      alert(error.response?.data?.message || error.message || "Unable to report found item.");
     } finally {
       setLoading(false);
     }

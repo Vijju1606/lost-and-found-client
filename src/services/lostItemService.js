@@ -1,10 +1,11 @@
 import api from "./api";
 export const reportLostItem = async(formData) => {
-    const response = await api.post("/LostItems",formData,{
-        headers:{
-            "Content-Type":"multipart/form-data",
-        },
-    });
+    const response = await api.post("/LostItems", formData);
+    return response.data;
+};
+
+export const getLostItems = async () => {
+    const response = await api.get("/LostItems");
     return response.data;
 };
 
@@ -22,8 +23,6 @@ export const getLostItemById =async(id)=>{
 };
 
 export const updateLostItem= async (id,formdata)=>{
-    const response = await api.put(`/LostItems/${id}`,formdata,{
-        headers:{"Content-Type": "multipart/formdata"}
-    });
+    const response = await api.put(`/LostItems/${id}`, formdata);
     return response.data;
 };

@@ -4,7 +4,7 @@ export const login = async( loginData)=>{
     return response.data;
 };
 export const register = async(registerData)=> {
-    const response = await api.post("Auth/register",registerData);
+    const response = await api.post("/Auth/register",registerData);
     return response.data;
 }
 export const forgotPassword = async(email)=> {

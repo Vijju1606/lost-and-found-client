@@ -32,11 +32,16 @@ function ReportLostItem() {
         formData.append("ItemName",itemName);
         formData.append("Description",description);
         formData.append("Location",location);
-        formData.append("DateLost",dateLost);
+        // The API binds this field as a DateTime; a date-only input causes a
+        // server-side save failure.
+        formData.append("DateLost", `${dateLost}T00:00:00.000Z`);
         formData.append("Image",image);
          
         const result = await reportLostItem(formData);
-        alert(result.message);
+        if (result.success === false) {
+          throw new Error(result.message || "Unable to report lost item.");
+        }
+        alert(result.message || "Lost item reported successfully.");
 
         setItemName("");
         setDescription("");
@@ -55,7 +60,7 @@ function ReportLostItem() {
     }
 
   catch (error) {
-    alert(error.message);
+    alert(error.response?.data?.message || error.message || "Unable to report lost item.");
 }
 finally{
     setLoading(false);

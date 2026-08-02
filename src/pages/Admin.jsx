@@ -32,7 +32,19 @@ function Admin() {
 
   const changeRole = async (user) => {
     if (Number(user.userId) === Number(userId)) return;
-    await updateUserRole(user.userId, user.role?.toLowerCase() === "admin" ? "User" : "Admin");
+    const isAdmin = user.role?.toLowerCase() === "admin";
+    const nextRole = isAdmin ? "User" : "Admin";
+    const confirmed = await confirmAction({
+      title: isAdmin ? "Remove administrator access?" : "Make this user an administrator?",
+      message: isAdmin
+        ? `${user.name || "This user"} will no longer be able to manage users and items.`
+        : `${user.name || "This user"} will be able to manage users and items.`,
+      confirmLabel: isAdmin ? "Make User" : "Make Admin",
+      destructive: isAdmin,
+    });
+    if (!confirmed) return;
+
+    await updateUserRole(user.userId, nextRole);
     await load();
   };
 
