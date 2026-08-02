@@ -4,7 +4,7 @@ import {
     getLostItemById,
     updateLostItem
 } from "../services/lostItemService";
-import { getAssetUrl } from "../services/api";
+import { getAssetUrl, useImageFallback } from "../services/api";
 
 import "./EditLostItem.css";
 
@@ -134,6 +134,7 @@ function EditLostItem() {
                         src={getAssetUrl(imageUrl)}
                         alt={itemName}
                         className="preview-image"
+                        onError={useImageFallback}
                     />
 
                 )}

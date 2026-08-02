@@ -14,6 +14,14 @@ export const getAssetUrl = (path) => {
   return new URL(path, serverOrigin).toString();
 };
 
+export const useImageFallback = (event) => {
+  const image = event.currentTarget;
+  if (image.dataset.fallbackApplied) return;
+
+  image.dataset.fallbackApplied = "true";
+  image.src = `${import.meta.env.BASE_URL}favicon.svg`;
+};
+
 const api = axios.create({
   baseURL: API_BASE_URL,
 });

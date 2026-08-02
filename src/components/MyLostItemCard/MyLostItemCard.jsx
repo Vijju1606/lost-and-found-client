@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./MyLostItemCard.css";
-import { getAssetUrl } from "../../services/api";
+import { getAssetUrl, useImageFallback } from "../../services/api";
 
 function MyLostItemCard({
     item,
@@ -16,6 +16,7 @@ function MyLostItemCard({
                 src={getAssetUrl(item.imageUrl)}
                 alt={item.itemName}
                 className="my-lost-image"
+                onError={useImageFallback}
             />
 
             <div className="my-lost-body">

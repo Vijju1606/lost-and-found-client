@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getAssetUrl } from "../services/api";
+import { getAssetUrl, useImageFallback } from "../services/api";
 
 function FoundMatchCard({ match ,onContact}) {
   return (
@@ -9,6 +9,7 @@ function FoundMatchCard({ match ,onContact}) {
         src={getAssetUrl(match.imageUrl)}
         alt={match.itemName}
         className="my-lost-image"
+        onError={useImageFallback}
       />
 
       <div className="my-lost-body">

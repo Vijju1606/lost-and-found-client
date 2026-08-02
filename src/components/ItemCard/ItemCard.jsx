@@ -2,7 +2,7 @@
 import "./ItemCard.css";
  import { Link } from "react-router-dom";
  import { useAuth } from "../../context/AuthContext";
- import { getAssetUrl } from "../../services/api";
+ import { getAssetUrl, useImageFallback } from "../../services/api";
  
 
  function ItemCard({item}){
@@ -15,6 +15,7 @@ import "./ItemCard.css";
                            <img
   src={getAssetUrl(item.imageUrl)}
   alt={item.itemName}
+  onError={useImageFallback}
 />
                         </div>
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getFoundItemById } from "../services/foundItemService";
 import { sendContactRequest } from "../services/contactService";
 import { useAuth } from "../context/AuthContext";
-import { getAssetUrl } from "../services/api";
+import { getAssetUrl, useImageFallback } from "../services/api";
 import "./FoundItemDetails.css";
 
 function FoundItemDetails(){
@@ -82,6 +82,7 @@ function FoundItemDetails(){
             <img
                 src={getAssetUrl(item.imageUrl)}
                 alt={item.itemName}
+                onError={useImageFallback}
             />
         </div>
 
