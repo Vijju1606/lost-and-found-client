@@ -1,0 +1,80 @@
+.found-report-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f7fb;
+    padding: 40px 20px;
+}
+
+.found-report-card {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.found-report-card h2,
+.found-report-card p {
+    text-align: center;
+}
+
+.found-report-card h2 {
+    margin-bottom: 10px;
+}
+
+.found-report-card p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.found-report-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.found-report-form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.found-report-form-group input,
+.found-report-form-group textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.found-report-form-group textarea {
+    resize: vertical;
+}
+
+.found-report-card button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #1e88e5;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.found-report-card button:hover {
+    background: #1565c0;
+}
+
+.found-report-card button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+    .found-report-card {
+        padding: 20px;
+    }
+}

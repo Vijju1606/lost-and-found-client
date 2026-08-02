@@ -1,0 +1,31 @@
+:root {
+
+    /* Colors */
+
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --background-color: #f4f8ff;
+    --surface-color: rgba(255,255,255,.78);
+
+    --text-color: #1e293b;
+    --secondary-text: #64748b;
+
+    --border-color: #e2e8f0;
+
+    /* Radius */
+
+    --border-radius: 8px;
+
+    /* Shadow */
+
+    --shadow: 0 12px 32px rgba(30,64,175,.10);
+    --glass-border: rgba(255,255,255,.9);
+
+    /* Spacing */
+
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+
+}

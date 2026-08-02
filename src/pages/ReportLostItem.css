@@ -1,0 +1,80 @@
+.lost-item-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#ffffff,#f7fbff 65%,#edf4ff);
+    padding: 40px 20px;
+}
+
+.lost-item-card {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.lost-item-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lost-item-card p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #1e88e5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1565c0;
+}
+
+button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+
+    .lost-item-container { padding: 24px 12px; align-items: flex-start; }
+    .lost-item-card {
+        padding: 20px;
+    }
+
+}

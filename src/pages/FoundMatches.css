@@ -1,0 +1,65 @@
+.match-score{
+    margin: 12px 0;
+    padding: 8px;
+    background: #fff7d6;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #e67e22;
+    text-align: center;
+}
+
+.match-contact-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px;
+    background: rgba(0, 0, 0, .45);
+    overflow-y: auto;
+}
+
+.match-contact-card {
+    width: min(100%, 420px);
+    box-sizing: border-box;
+    padding: 26px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+
+.match-contact-card h3 {
+    margin-top: 0;
+}
+
+.match-contact-score {
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff7d6;
+    color: #b86209;
+    font-weight: 700;
+}
+
+.match-contact-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.match-contact-actions button {
+    flex: 1;
+    padding: 11px;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.match-contact-cancel {
+    background: #777;
+}
+
+.match-contact-confirm {
+    background: #1e88e5;
+}

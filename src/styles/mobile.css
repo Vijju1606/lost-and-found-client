@@ -1,0 +1,33 @@
+@media (max-width: 700px) {
+  .hero-image { width: 100%; margin-top: 22px; }
+  .hero-visual { max-height: 300px; border-radius: 18px; }
+  body { font-size: 15px; }
+  .container { width: calc(100% - 28px); }
+  .details-container { gap: 24px; }
+  .found-details { padding: 30px 16px; }
+  .details-content h1 { font-size: 28px; }
+  .lost-item-container { padding: 24px 12px; align-items: flex-start; }
+  .lost-item-card, .found-report-card { padding: 20px; }
+  .search-section { margin: 40px auto; padding: 0 16px; }
+  .search-box { gap: 10px; }
+  .search-box input { width: 100%; }
+  .items-grid, .found-grid { grid-template-columns: 1fr !important; gap: 16px; }
+  .contact-request-actions, .match-contact-actions { flex-direction: column; }
+  .contact-request-card, .match-contact-card { padding: 20px; }
+  .sent-requests-page, .admin-page { padding: 30px 16px; }
+  .sent-request-card-top, .admin-header { gap: 12px; flex-wrap: wrap; }
+  .admin-stats { grid-template-columns: 1fr !important; gap: 12px; }
+  .admin-columns { grid-template-columns: 1fr !important; gap: 16px; }
+  .admin-row { align-items: flex-start; flex-wrap: wrap; }
+  .admin-row > div { min-width: 60%; }
+}
+
+@media (max-width: 480px) {
+  .my-lost-items, .sent-requests-page, .admin-page { padding: 24px 14px; }
+  .item-card, .lost-item-card, .found-report-card { padding: 16px; border-radius: 14px; }
+  .item-image { height: 160px; margin-bottom: 14px; }
+  .items-grid, .found-grid { gap: 12px; }
+  .search-section { margin: 28px auto; padding: 0 14px; }
+  .search-box { flex-direction: column; }
+  .search-box .btn { width: 100%; }
+}

@@ -1,0 +1,16 @@
+.my-lost-items{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.my-lost-items h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.items-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
